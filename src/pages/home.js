@@ -47,9 +47,12 @@ class HomeComponent extends Component {
         <hr />
 
         <ListGroup>
-          {expense.map(item => (
+        
+        {(expense) ?
+          expense.map(item => (
             <ExpenseItem key={item._id} item={item} />
-          ))}
+          )) : null
+        }
         </ListGroup>
         <AddForm />
       </div>

@@ -3,10 +3,12 @@ import { Button, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import{connect} from 'react-redux';
+import {Signup} from '../actions/auth-actions'
 
-class Signup extends Component {
+class SignUp extends Component {
   _handleFormSubmit(values) {
-    
+    this.props.Signup(values)
     console.log(values);
   }
   render() {
@@ -96,5 +98,12 @@ class Signup extends Component {
     );
   }
 }
+const mapStateToProps = (auth) =>{
+  return{
+     ptofile:auth.profile
 
-export { Signup };
+  }
+}
+
+const Register = connect(mapStateToProps,{Signup})(SignUp)
+export default Register;

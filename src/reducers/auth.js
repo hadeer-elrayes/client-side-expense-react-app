@@ -1,4 +1,4 @@
-import {AUTH_ATTEMPTING ,AUTH_SUCCESS , AUTH_FAILD , USER_LOGEDOUT, FETCHED_PROFILE} from '../actions/types'
+import {AUTH_ATTEMPTING ,AUTH_SUCCESS , AUTH_FAILD , USER_LOGEDOUT, FETCHED_PROFILE ,REGISTER} from '../actions/types'
 
 
 
@@ -18,8 +18,10 @@ export default (state = INITIAL_STATE, action) => {
             return {...state,attempting:false,isAuth:true,error:null}
         case AUTH_FAILD :
             return {...state,attempting:false,isAuth:false,error:action.payload}
+        case REGISTER :
+            return {...state,attempting:false,isAuth:false,error:null}
         case USER_LOGEDOUT :
-            return {...state,attempting:false,isAuth:false,profile:{}}
+            return {...state,attempting:false,isAuth:false,profile:action.payload}
         case FETCHED_PROFILE :
             return {...state,profile:action.payload}
         default:
